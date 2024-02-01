@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "load qr code";
+}
+<h1>@ViewData["Title"]</h1>
+
+<form enctype="multipart/form-data" method="post" asp-controller="Home" asp-action="Privacy">
+    <p for="file">Choose a file:</p>
+    <input type="file" id="file" name="file">
+    <br></br>
+    <input type="submit" value="Upload">
+</form>
+
+@if (!string.IsNullOrEmpty(ViewBag.URL))
+{
+    <div class="col-lg-12">
+        <img src="@ViewBag.URL" />
+    </div>
+}
+
+<div class="col-lg-12">
+    <a href="/Home/ReadQRCode" class="btn">read image</a>
+</div>
+
+@if (!string.IsNullOrEmpty(ViewBag.Text))
+{
+    <div class="col-lg-12">
+        SCAN QR: @ViewBag.Text
+    </div>
+}
